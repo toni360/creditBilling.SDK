@@ -34,13 +34,20 @@ sellerUserId|是|商户用户ID，28个字符，如果商户传入值大于28，
 responseCallback|是|回调接口,通过此接口通知开发者支付状态
 
 code: 
+
 	// 支付成功: 0;
+
 	// 支付失败: 404;
+
 	// productName(商品名称)不能等于null:401;
+
 	// sum交易金额因在(1-100000分): 402;
+
 	// alias不合法 :403;
+
 	// sellerUserId不能等于null :403;
-	// sellerUserId不能有汉子 :405;
+
+	// sellerUserId不能有汉字 :405;
 
 **isBalanceDue接口**
 isBalanceDue(BalanceDueCallback balanceDueCallback)	
