@@ -186,11 +186,11 @@ errmsg|是|错误代码信息描述
 
 ##SDK下载地址
 
-http://cl.ly/0s2U3q0q3l1x
+https://github.com/toni360/creditBilling.SDK/tree/master/sdk
 
 ##DEMO下载地址
 
-http://cl.ly/2D24003P1f09/download/paysdk_demo.rar
+https://github.com/toni360/creditBilling.SDK/tree/master/demo
 
 
 
