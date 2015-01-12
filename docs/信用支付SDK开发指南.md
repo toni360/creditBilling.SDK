@@ -11,12 +11,14 @@
 只要调用SDK中的接口,就可以实现一键支付，让用户毫无中断游戏感觉。
     
     Pay pay = PayFactory.getInstance(context);
+    string appId = "bingxueqiyuan";
+    string appKey= "222dwdddiuw344d8dfr088";
     string productName = "商品名称";
     int sum = 300;  //精确到分，表示300分，即3元
     string alias = "360market";
     string sellerUserId = "uc-zhangsan";
     
-    pay.creditPay(productName, sum, alias, sellerUserId,new ResponseCallback() {
+    pay.creditPay(appId, appKey, productName, sum, alias, sellerUserId,new ResponseCallback() {
 	    Parameters: code 支付状态码
 	    @Override
     	public void responseStateCode(int code) {
@@ -26,7 +28,9 @@
     
 
 参数|必须|说明
----|-------|----    
+---|-------|----  
+appId|是|信用支付平台分配给游戏应用的应用标识
+appKey|是|信用支付平台分配给游戏应用的接入秘钥，不能对外公开  
 productName|是|商品名称，可以是汉字，支持28个字节的字母和数字，或支持14个汉字
 sum |是|交易金额，分为单位，最大到千元，即长度为6位(1-100000分)
 alias|是|开发者自定义串 ,可以是渠道标识，长度不能超过为100个字符(只能是字符或数字)
@@ -50,7 +54,7 @@ code:
 	// sellerUserId不能有汉字 :405;
 
 **isBalanceDue接口**
-isBalanceDue(BalanceDueCallback balanceDueCallback)	
+isBalanceDue(appId, appKey, BalanceDueCallback balanceDueCallback)	
 
 该接口用于游戏在启动后调用，用于判断该用户是否有欠款到期需要偿还。
 通过回调notifyBalanceDueMomey(int money)通知开发者欠款金额
@@ -61,7 +65,7 @@ isBalanceDue(BalanceDueCallback balanceDueCallback)
     //初始化准备环境
     Pay pay = PayFactory.getInstance(context);
 
-    pay.isBalanceDue(new BalanceDueCallback() {
+    pay.isBalanceDue(appId, appKey, new BalanceDueCallback() {
 	    /*
 	    *@param momey : 欠款金额(无到期欠款或没有登录momey==0)
 	    */
@@ -74,7 +78,8 @@ isBalanceDue(BalanceDueCallback balanceDueCallback)
 
 参数|必须|说明
 ----|----|----
-BalanceDueCallback|是|如果isBalanceDue(null)没有任何意义
+appId|是|信用支付平台分配给游戏应用的应用标识
+appKey|是|信用支付平台分配给游戏应用的接入秘钥，不能对外公开  BalanceDueCallback|是|如果isBalanceDue(null)没有任何意义
 
 
 ###2.导入信用支付SDK到开发工程
